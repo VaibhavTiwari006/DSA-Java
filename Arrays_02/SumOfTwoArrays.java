@@ -1,5 +1,6 @@
 package Arrays_02;
 import java.util.*;
+// Assumption : Each array element is a single digit (0–9)
 /*
 Enter number of elements in the array
 3

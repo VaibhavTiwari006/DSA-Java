@@ -10,6 +10,7 @@ public class DuplicateBracket {
             if(ch == ')'){
                 if(st.peek()=='('){
                     System.out.println(true);
+                    in.close();
                     return;
                 }
                 else{

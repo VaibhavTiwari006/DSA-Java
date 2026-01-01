@@ -5,19 +5,19 @@ class Cart {
     void addItem(double price) {
         if (price > 0) {
             total += price;
-            System.out.println("Item added: ₹" + price);
+            System.out.println("Item added: Rs." + price);
         }
     }
     void removeItem(double price) {
         if (price > 0 && price <= total) {
             total -= price;
-            System.out.println("Item removed: ₹" + price);
+            System.out.println("Item removed: Rs." + price);
         } else {
             System.out.println("Cannot remove item");
         }
     }
     void showBill() {
-        System.out.println("Total Bill: Rs" + total);
+    System.out.println("Total Bill: Rs." + total);
     }
 }
 public class ShoppingCartApp {
@@ -29,11 +29,18 @@ public class ShoppingCartApp {
             int ch = sc.nextInt();
 
             switch (ch) {
-                case 1 -> cart.addItem(sc.nextDouble());
-                case 2 -> cart.removeItem(sc.nextDouble());
+                case 1 -> {
+                    System.out.print("Enter item price to add: ");
+                    cart.addItem(sc.nextDouble());
+                }
+                case 2 -> {
+                    System.out.print("Enter item price to remove: ");
+                    cart.removeItem(sc.nextDouble());
+                }
                 case 3 -> cart.showBill();
                 case 4 -> {
                     System.out.println("Thank you for shopping!");
+                    sc.close();  // <--- Close Scanner here
                     return;
                 }
                 default -> System.out.println("Invalid choice");

@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 // Next Greater Element to the Right
+// This code is polished version of NGETR_1
+// This code uses sepearate functions and BufferedReader
 public class NGETR {
 
     public static void display(int[] a) {

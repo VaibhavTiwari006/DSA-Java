@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 // Next Greater Element to the Right
+// Impelented using an alternative approach to this problem
 public class NGETR2 {
 
     public static void display(int[] a) {

@@ -3,8 +3,8 @@ package Stack_04;
 import java.util.*;
 
 public class SlidingWindowMax {
-    // inpput 2 9 3 8 1 7 12 6 4
-    // output 9 9 8 12 12 12 12 12
+    // input  2 9 3 8 1 7 12 6 4
+    // output 9 9 8 12 12 12
     // take 4 elements print the max
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

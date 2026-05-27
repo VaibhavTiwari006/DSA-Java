@@ -3,7 +3,7 @@ package Stack_04;
 import java.io.*;
 import java.util.*;
 
-public class PrefixEvalution_and_Conversion {
+public class PrefixEvaluation_and_Conversion {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String exp = br.readLine();

@@ -1,5 +1,4 @@
 package Queue_05;
-import java.util.Queue;
 public class BasicQueue { 
 
     static class Queue {

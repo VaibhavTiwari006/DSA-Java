@@ -1,7 +1,4 @@
 package Queue_05;
-import java.util.*;
-import java.io.*;
-
 public class Build_Normal_Queue {
 
     public static class CustomQueue {

@@ -1,4 +1,4 @@
-package Sorting_05;
+package Sorting_06;
 import java.util.Scanner;
 public class InsertionSort{
     public static void main (String args[]){

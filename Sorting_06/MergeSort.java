@@ -1,4 +1,4 @@
-package Sorting_05;
+package Sorting_06;
 public class MergeSort {
     int[] array;
     int[] tempMergeArr;

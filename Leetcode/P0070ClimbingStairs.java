@@ -1,6 +1,6 @@
 package Leetcode;
 
-class ClimbingStairs {
+class P0070ClimbingStairs {
     public int climbStairs(int n) {
         if (n <= 2) {
             return n;

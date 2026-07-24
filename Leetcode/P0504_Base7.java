@@ -1,6 +1,6 @@
 package Leetcode;
 
-public class P0007_Base7 {
+public class P0504_Base7 {
     public String convertToBase7(int num) {
         if(num == 0) return "0";
 

@@ -1,3 +1,4 @@
+package Leetcode;
 class Solution {
     public void moveZeroes(int[] nums) {
         int j = 0;

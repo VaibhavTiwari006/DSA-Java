@@ -1,7 +1,6 @@
 package Leetcode;
 
 public class P0268_MissingNumber {
-    class Solution {
     public int missingNumber(int[] nums) {
 
         int expectedSum = nums.length * (nums.length + 1) / 2;
@@ -13,5 +12,4 @@ public class P0268_MissingNumber {
 
         return expectedSum - actualSum;
     }
- }   
 }

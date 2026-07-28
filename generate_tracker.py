@@ -16,37 +16,56 @@ def generate_tracker():
     xlsx_file = r'c:\Users\Vaibhav\DSA-Java\LeetCode_DSA_Tracker.xlsx'
 
     data = [
-        ["No.", "Topic", "Subtopic", "Problem", "LeetCode Link", "Difficulty", "Similar Pepcoding Topic", "Solved Alone?", "Time Taken (mins)", "Date Solved", "Revision 1 (1 day)", "Revision 2 (1 week)", "Revision 3 (1 month)"],
+        ["No.", "Topic", "What to Learn First", "Problem", "Algorithm Used", "LeetCode Link", "Difficulty", "Solved Alone?", "Time Taken (mins)", "Date Solved", "Revision 1", "Revision 2", "Revision 3"],
         
-        # Basics & Math
-        [1, "Basics", "Getting Started", "Fibonacci Number", "https://leetcode.com/problems/fibonacci-number/", "Easy", "Fibonacci Numbers", "", "", "", "", "", ""],
-        [2, "Basics", "Getting Started", "Climbing Stairs", "https://leetcode.com/problems/climbing-stairs/", "Easy", "Fibonacci Numbers", "", "", "", "", "", ""],
-        [3, "Basics", "Math", "Missing Number", "https://leetcode.com/problems/missing-number/", "Easy", "Math/Loops", "", "", "", "", "", ""],
-        [4, "Basics", "Math", "Palindrome Number", "https://leetcode.com/problems/palindrome-number/", "Easy", "Reverse a Number", "", "", "", "", "", ""],
-        [5, "Basics", "Math", "Reverse Integer", "https://leetcode.com/problems/reverse-integer/", "Medium", "Reverse a Number", "", "", "", "", "", ""],
-        [6, "Basics", "Math", "Count Primes", "https://leetcode.com/problems/count-primes/", "Medium", "Prime Numbers", "", "", "", "", "", ""],
+        # 1. Basic Math & Loops
+        [1, "Math & Basics", "Basic Math & Loops", "Subtract the Product and Sum of Digits of an Integer", "-", "https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/", "Easy", "", "", "", "", "", ""],
+        [2, "Math & Basics", "Basic Math & Loops", "Number of Steps to Reduce a Number to Zero", "-", "https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/", "Easy", "", "", "", "", "", ""],
+        [3, "Math & Basics", "Basic Math & Loops", "Power of Two", "Bitwise or Repeated Division", "https://leetcode.com/problems/power-of-two/", "Easy", "", "", "", "", "", ""],
+        [4, "Math & Basics", "Basic Math & Loops", "Fibonacci Number", "Recursion or DP", "https://leetcode.com/problems/fibonacci-number/", "Easy", "YES", 5, "22-07-2026", "23-07-2026", "", ""],
+        [5, "Math & Basics", "Basic Math & Loops", "Climbing Stairs", "Fibonacci Sequence", "https://leetcode.com/problems/climbing-stairs/", "Easy", "YES", 5, "22-07-2026", "23-07-2026", "", ""],
+        [6, "Math & Basics", "Basic Math & Loops", "Palindrome Number", "Digit Extraction", "https://leetcode.com/problems/palindrome-number/", "Easy", "YES", 10, "23-07-2026", "24-07-2026", "", ""],
+        [7, "Math & Basics", "Basic Math & Loops", "Reverse Integer", "Digit Extraction", "https://leetcode.com/problems/reverse-integer/", "Medium", "YES", 10, "23-07-2026", "24-07-2026", "", ""],
+        [8, "Math & Basics", "Basic Math & Loops", "Count Primes", "Sieve of Eratosthenes", "https://leetcode.com/problems/count-primes/", "Medium", "NO", 30, "24-07-2026", "25-07-2026", "", ""],
+        [9, "Math & Basics", "Basic Math & Loops", "Base 7", "Base Conversion", "https://leetcode.com/problems/base-7/", "Easy", "YES", 30, "24-07-2026", "25-07-2026", "", ""],
+        [10, "Math & Basics", "Basic Math & Loops", "Add Binary", "-", "https://leetcode.com/problems/add-binary/", "Easy", "NO", 10, "25-07-2026", "26-07-2026", "", ""],
         
-        # Number System
-        [7, "Number System", "Base Conversion", "Base 7", "https://leetcode.com/problems/base-7/", "Easy", "Decimal to Any Base", "", "", "", "", "", ""],
-        [8, "Number System", "Addition", "Add Binary", "https://leetcode.com/problems/add-binary/", "Easy", "Any Base Addition", "", "", "", "", "", ""],
-        [9, "Number System", "Addition", "Add to Array-Form of Integer", "https://leetcode.com/problems/add-to-array-form-of-integer/", "Easy", "Sum of two arrays", "", "", "", "", "", ""],
+        # 2. 1D Arrays (Basic Traversal)
+        [11, "Arrays", "Basic Array Traversal", "Build Array from Permutation", "-", "https://leetcode.com/problems/build-array-from-permutation/", "Easy", "", "", "", "", "", ""],
+        [12, "Arrays", "Basic Array Traversal", "Concatenation of Array", "-", "https://leetcode.com/problems/concatenation-of-array/", "Easy", "", "", "", "", "", ""],
+        [13, "Arrays", "Basic Array Traversal", "Running Sum of 1d Array", "Prefix Sum", "https://leetcode.com/problems/running-sum-of-1d-array/", "Easy", "", "", "", "", "", ""],
+        [14, "Arrays", "Basic Array Traversal", "Find Pivot Index", "Prefix Sum", "https://leetcode.com/problems/find-pivot-index/", "Easy", "", "", "", "", "", ""],
+        [15, "Arrays", "Basic Array Traversal", "Missing Number", "Gauss Formula or XOR", "https://leetcode.com/problems/missing-number/", "Easy", "YES", 10, "23-07-2026", "24-07-2026", "", ""],
+        [16, "Arrays", "Basic Array Traversal", "Add to Array-Form of Integer", "-", "https://leetcode.com/problems/add-to-array-form-of-integer/", "Easy", "", "", "", "", "", ""],
+        [17, "Arrays", "Basic Array Traversal", "Best Time to Buy and Sell Stock", "Track Min Value", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "Easy", "", "", "", "", "", ""],
         
-        # Arrays
-        [10, "Arrays", "Search/Math", "Two Sum", "https://leetcode.com/problems/two-sum/", "Easy", "Find Element in Array", "", "", "", "", "", ""],
-        [11, "Arrays", "Search/Math", "Find Target Indices After Sorting Array", "https://leetcode.com/problems/find-target-indices-after-sorting-array/", "Easy", "Find Element in Array", "", "", "", "", "", ""],
-        [12, "Arrays", "Two Pointers", "Move Zeroes", "https://leetcode.com/problems/move-zeroes/", "Easy", "Array Manipulation", "", "", "", "", "", ""],
-        [13, "Arrays", "Two Pointers", "Squares of a Sorted Array", "https://leetcode.com/problems/squares-of-a-sorted-array/", "Easy", "Array Manipulation", "", "", "", "", "", ""],
-        [14, "Arrays", "Counting", "Majority Element", "https://leetcode.com/problems/majority-element/", "Easy", "Array Manipulation", "", "", "", "", "", ""],
-        [15, "Arrays", "Subarrays", "Best Time to Buy and Sell Stock", "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "Easy", "Array Manipulation", "", "", "", "", "", ""],
+        # 3. Array - Two Pointers
+        [18, "Arrays - Two Pointers", "Two Pointers Technique", "Reverse String", "Two Pointers (Left/Right)", "https://leetcode.com/problems/reverse-string/", "Easy", "", "", "", "", "", ""],
+        [19, "Arrays - Two Pointers", "Two Pointers Technique", "Remove Element", "Two Pointers (Slow/Fast)", "https://leetcode.com/problems/remove-element/", "Easy", "", "", "", "", "", ""],
+        [20, "Arrays - Two Pointers", "Two Pointers Technique", "Move Zeroes", "Two Pointers (Slow/Fast)", "https://leetcode.com/problems/move-zeroes/", "Easy", "YES", 5, "26-07-2026", "27-07-2026", "", ""],
+        [21, "Arrays - Two Pointers", "Two Pointers Technique", "Squares of a Sorted Array", "Two Pointers (Left/Right)", "https://leetcode.com/problems/squares-of-a-sorted-array/", "Easy", "YES", 10, "27-07-2026", "28-07-2026", "", ""],
         
-        # Stacks
-        [16, "Stack", "Basic Stack", "Valid Parentheses", "https://leetcode.com/problems/valid-parentheses/", "Easy", "Balanced Brackets", "", "", "", "", "", ""],
-        [17, "Stack", "Basic Stack", "Remove Outermost Parentheses", "https://leetcode.com/problems/remove-outermost-parentheses/", "Easy", "Duplicate Brackets", "", "", "", "", "", ""],
-        [18, "Stack", "Basic Stack", "Remove All Adjacent Duplicates In String", "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/", "Easy", "Stack Basics", "", "", "", "", "", ""],
-        [19, "Stack", "Design", "Min Stack", "https://leetcode.com/problems/min-stack/", "Medium", "Minimum Stack - 1", "", "", "", "", "", ""],
-        [20, "Stack", "Evaluation", "Evaluate Reverse Polish Notation", "https://leetcode.com/problems/evaluate-reverse-polish-notation/", "Medium", "Postfix Evaluations", "", "", "", "", "", ""],
-        [21, "Stack", "Monotonic Stack", "Next Greater Element I", "https://leetcode.com/problems/next-greater-element-i/", "Easy", "Next Greater Element on the Right", "", "", "", "", "", ""],
-        [22, "Stack", "Monotonic Stack", "Daily Temperatures", "https://leetcode.com/problems/daily-temperatures/", "Medium", "Next Greater Element on the Right", "", "", "", "", "", ""]
+        # 4. Binary Search & Sorting
+        [22, "Binary Search & Sort", "Binary Search", "Find Target Indices After Sorting Array", "Sorting", "https://leetcode.com/problems/find-target-indices-after-sorting-array/", "Easy", "", "", "", "", "", ""],
+        [23, "Binary Search & Sort", "Binary Search", "Binary Search", "Binary Search", "https://leetcode.com/problems/binary-search/", "Easy", "", "", "", "", "", ""],
+        [24, "Binary Search & Sort", "Binary Search", "Search Insert Position", "Binary Search", "https://leetcode.com/problems/search-insert-position/", "Easy", "", "", "", "", "", ""],
+        [25, "Binary Search & Sort", "Binary Search", "First Bad Version", "Binary Search", "https://leetcode.com/problems/first-bad-version/", "Easy", "", "", "", "", "", ""],
+        
+        # 5. Hashing / HashMaps
+        [26, "Hashing", "HashMaps & HashSets", "Jewels and Stones", "HashSet", "https://leetcode.com/problems/jewels-and-stones/", "Easy", "", "", "", "", "", ""],
+        [27, "Hashing", "HashMaps & HashSets", "Contains Duplicate", "HashSet", "https://leetcode.com/problems/contains-duplicate/", "Easy", "", "", "", "", "", ""],
+        [28, "Hashing", "HashMaps & HashSets", "Valid Anagram", "HashMap / Frequency Array", "https://leetcode.com/problems/valid-anagram/", "Easy", "", "", "", "", "", ""],
+        [29, "Hashing", "HashMaps & HashSets", "Two Sum", "HashMap", "https://leetcode.com/problems/two-sum/", "Easy", "YES", 20, "25-07-2026", "26-07-2026", "", ""],
+        [30, "Hashing", "HashMaps & HashSets", "Majority Element", "Moore's Voting Algorithm", "https://leetcode.com/problems/majority-element/", "Easy", "NO", 40, "28-07-2026", "28-07-2026", "", ""],
+        
+        # 6. Basic Stacks
+        [31, "Stacks", "Stack Data Structure", "Valid Parentheses", "Stack", "https://leetcode.com/problems/valid-parentheses/", "Easy", "", "", "", "", "", ""],
+        [32, "Stacks", "Stack Data Structure", "Remove Outermost Parentheses", "Stack or Counter", "https://leetcode.com/problems/remove-outermost-parentheses/", "Easy", "", "", "", "", "", ""],
+        [33, "Stacks", "Stack Data Structure", "Remove All Adjacent Duplicates In String", "Stack", "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/", "Easy", "", "", "", "", "", ""],
+        [34, "Stacks", "Stack Data Structure", "Min Stack", "Two Stacks", "https://leetcode.com/problems/min-stack/", "Medium", "", "", "", "", "", ""],
+        [35, "Stacks", "Stack Data Structure", "Evaluate Reverse Polish Notation", "Stack", "https://leetcode.com/problems/evaluate-reverse-polish-notation/", "Medium", "", "", "", "", "", ""],
+        [36, "Stacks", "Stack Data Structure", "Next Greater Element I", "Monotonic Stack", "https://leetcode.com/problems/next-greater-element-i/", "Easy", "", "", "", "", "", ""],
+        [37, "Stacks", "Stack Data Structure", "Daily Temperatures", "Monotonic Stack", "https://leetcode.com/problems/daily-temperatures/", "Medium", "", "", "", "", "", ""]
     ]
 
     wb = Workbook()
@@ -84,8 +103,8 @@ def generate_tracker():
             if row_idx % 2 == 0:
                 cell.fill = alt_fill
             
-            # Formatting difficulty column (now at column 6 because of No.)
-            if cell.column == 6:
+            # Formatting difficulty column (now at column 7)
+            if cell.column == 7:
                 if cell.value == "Easy":
                     cell.font = Font(color="00B050", bold=True)
                 elif cell.value == "Medium":
@@ -93,24 +112,27 @@ def generate_tracker():
                 elif cell.value == "Hard":
                     cell.font = Font(color="FF0000", bold=True)
                     
-            # LeetCode links
-            if cell.column == 5 and cell.value and isinstance(cell.value, str) and cell.value.startswith("http"):
+            # LeetCode links (now at column 6)
+            if cell.column == 6 and cell.value and isinstance(cell.value, str) and cell.value.startswith("http"):
                 cell.hyperlink = cell.value
                 cell.font = Font(color="0563C1", underline="single")
             
             # Alignments (No. is at 1)
-            if cell.column in [2, 3, 4, 5, 7]:
+            if cell.column in [2, 3, 4, 5, 6, 8]:
                 cell.alignment = left_align
             else:
                 cell.alignment = center_align
 
     # Column Widths
     widths = {
-        'A': 5, 'B': 15, 'C': 20, 'D': 45, 'E': 45, 'F': 15,
-        'G': 35, 'H': 15, 'I': 18, 'J': 15, 'K': 18, 'L': 18, 'M': 18
+        'A': 5, 'B': 15, 'C': 20, 'D': 45, 'E': 25, 'F': 45, 'G': 15,
+        'H': 15, 'I': 18, 'J': 15, 'K': 18, 'L': 18, 'M': 18, 'N': 18
     }
     for col, width in widths.items():
-        ws.column_dimensions[col].width = width
+        if col in ws.column_dimensions:
+            ws.column_dimensions[col].width = width
+        else:
+            ws.column_dimensions[col].width = width
 
     ws.auto_filter.ref = ws.dimensions
     ws.freeze_panes = "A2"

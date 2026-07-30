@@ -1,6 +1,6 @@
 package Leetcode;
-class Solution {
-    public int P1281_SubtractProductandSumofDigits(int n) {
+class P1281_SubtractProductandSumofDigits {
+    public int SubtractProductandSumofDigits(int n) {
         int product = 1;
         int sum = 0;
         while (n > 0){

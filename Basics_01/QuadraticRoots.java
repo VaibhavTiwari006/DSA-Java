@@ -17,6 +17,7 @@ public class QuadraticRoots {
         // Check if it is a quadratic equation
         if (a == 0) {
             System.out.println("Not a quadratic equation (a cannot be 0).");
+            sc.close();
             return;
         }
 

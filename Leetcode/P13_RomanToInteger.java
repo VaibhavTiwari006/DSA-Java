@@ -1,5 +1,4 @@
 package Leetcode;
-
 class Solution {
     public int romanToInt(String s) {
         int ans = 0;
@@ -13,10 +12,8 @@ class Solution {
                 ans += current;
             }
         }
-
         return ans;
     }
-
     public int value(char ch) {
         switch (ch) {
             case 'I':

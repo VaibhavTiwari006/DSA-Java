@@ -1,6 +1,6 @@
 package Leetcode;
 import java.util.Arrays;
-public class P242_ValidAnagram {
+public class P0242_ValidAnagram {
     class Solution {
     public boolean isAnagram(String s, String t) {
         if(s.length() != t.length()){

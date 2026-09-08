@@ -1,5 +1,5 @@
 package Leetcode;
-public class P69_Sqrtx {
+public class P0069_Sqrtx {
     class Solution {
     public int mySqrt(int x) {
         if(x<2){

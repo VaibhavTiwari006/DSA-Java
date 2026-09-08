@@ -1,5 +1,5 @@
 package Leetcode;
-public class P389_FindTheDifference {
+public class P0389_FindTheDifference {
     class Solution {
         public char findTheDifference(String s, String t) {
             StringBuilder str = new StringBuilder(s);

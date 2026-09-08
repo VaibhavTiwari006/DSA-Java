@@ -7,7 +7,7 @@ Input: nums = [1,3,5,6], target = 2
 Output: 1
 ***/
 package Leetcode;
-public class P35_SearchInsertPosition {
+public class P0035_SearchInsertPosition {
     public int searchInsert(int[] nums, int target) {
          int li=0;
         int hi=nums.length-1;

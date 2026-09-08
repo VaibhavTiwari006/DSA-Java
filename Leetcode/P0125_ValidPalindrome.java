@@ -1,5 +1,5 @@
 package Leetcode;
-public class P125_ValidPalindrome {
+public class P0125_ValidPalindrome {
     public boolean isPalindrome(String s) {
         String clean = "";
         s = s.toLowerCase();

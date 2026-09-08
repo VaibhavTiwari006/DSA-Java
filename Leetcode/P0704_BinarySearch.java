@@ -1,5 +1,5 @@
 package Leetcode;
-public class P704_BinarySearch {
+public class P0704_BinarySearch {
     public int search(int[] nums, int target) {
         int li=0;
         int hi=nums.length-1;

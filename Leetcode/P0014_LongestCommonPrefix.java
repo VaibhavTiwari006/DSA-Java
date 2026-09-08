@@ -1,6 +1,6 @@
 package Leetcode;
 
-public class P14_LongestCommonPrefix {
+public class P0014_LongestCommonPrefix {
     class Solution {
     public String longestCommonPrefix(String[] strs) {
         String prefix = strs[0];

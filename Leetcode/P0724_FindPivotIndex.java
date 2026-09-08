@@ -1,5 +1,5 @@
 package Leetcode;
-public class P724_FindPivotIndex {
+public class P0724_FindPivotIndex {
     public int pivotIndex(int[] nums) {
         int totalSum = 0;
         for(int i =0; i< nums.length;i++){

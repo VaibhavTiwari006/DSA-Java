@@ -1,5 +1,5 @@
 package Leetcode;
-public class P500_KeyboardRow {
+public class P0500_KeyboardRow {
     class Solution {
         public String[] findWords(String[] words) {
             String row1 = "qwertyuiop";

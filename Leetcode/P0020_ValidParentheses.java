@@ -1,6 +1,6 @@
 package Leetcode;
 import java.util.Stack;
-public class P0020ValidParentheses {
+public class P0020_ValidParentheses {
     public boolean isValid(String s) {
         Stack<Character> st = new Stack<>();
         for (int i = 0; i < s.length(); i++) {

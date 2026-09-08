@@ -1,6 +1,6 @@
 package Leetcode;
 
-public class P414_ThirdMaximumNumber {
+public class P0414_ThirdMaximumNumber {
     class Solution {
         public int thirdMax(int[] nums) {
             Long first = null;

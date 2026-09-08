@@ -1,5 +1,5 @@
 package Leetcode;
-public class P42_TrappingRainWater {
+public class P0042_TrappingRainWater {
     class Solution {
         public int trap(int[] height) {
             int Lmax = 0;

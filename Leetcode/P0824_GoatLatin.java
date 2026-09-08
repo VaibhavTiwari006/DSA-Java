@@ -1,5 +1,5 @@
 package Leetcode;
-public class P824_GoatLatin {
+public class P0824_GoatLatin {
     class Solution {
     public String toGoatLatin(String sentence) {
 

@@ -1,5 +1,5 @@
 package Leetcode;
-public class P344_ReverseString {
+public class P0344_ReverseString {
    class Solution {
     public void reverseString(char[] s) {
         int left = 0;

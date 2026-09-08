@@ -1,5 +1,5 @@
 package Leetcode;
-public class P292_NimGame {
+public class P0292_NimGame {
     class Solution {
     public boolean canWinNim(int n) {
         return n%4!=0;

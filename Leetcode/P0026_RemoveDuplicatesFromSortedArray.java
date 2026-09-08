@@ -1,5 +1,5 @@
 package Leetcode;
-public class P26_RemoveDuplicatesFromSortedArray {
+public class P0026_RemoveDuplicatesFromSortedArray {
     class Solution {
     public int removeDuplicates(int[] nums) {
         if(nums.length == 0){

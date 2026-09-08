@@ -1,6 +1,6 @@
 package Leetcode;
 
-public class P115_DistinctSubsequences {
+public class P0115_DistinctSubsequences {
     class Solution {
         public int numDistinct(String s, String t) {
             int m =s.length();

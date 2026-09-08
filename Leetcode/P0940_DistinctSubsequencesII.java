@@ -2,7 +2,7 @@ package Leetcode;
 
 import java.util.HashMap;
 
-public class P940_DistinctSubsequencesII {
+public class P0940_DistinctSubsequencesII {
     class Solution {
     public int distinctSubseqII(String s) {
         long MOD = 1_000_000_007;

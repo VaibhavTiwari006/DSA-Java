@@ -1,5 +1,5 @@
 package Leetcode;
-public class P258_AddDigits {
+public class P0258_AddDigits {
     class Solution {
     public int addDigits(int num) {
         while (num >= 10) {

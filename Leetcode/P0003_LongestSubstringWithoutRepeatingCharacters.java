@@ -1,6 +1,6 @@
 package Leetcode;
 import java.util.HashSet;
-public class P3_LongestSubstringWithoutRepeatingCharacters {
+public class P0003_LongestSubstringWithoutRepeatingCharacters {
     class Solution {
     public int lengthOfLongestSubstring(String s) {
         HashSet<Character> set = new HashSet<>();

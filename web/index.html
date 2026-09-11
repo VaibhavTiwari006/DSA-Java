@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Revise • Spaced Repetition Practice</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">⚡</div>
+        <span>DSA Revise</span>
+      </a>
+
+      <div class="nav-links">
+        <button class="nav-btn active" data-tab="today">
+          🎯 Due Today <span class="badge-count" id="today-count-badge">0</span>
+        </button>
+        <button class="nav-btn" data-tab="upcoming">
+          ⏳ Upcoming <span class="badge-count" id="upcoming-count-badge">0</span>
+        </button>
+        <button class="nav-btn" data-tab="all">
+          📋 All Problems <span class="badge-count" id="all-count-badge">0</span>
+        </button>
+        <button class="nav-btn" data-tab="analytics">
+          📊 Mastery
+        </button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-sm" id="btn-import-json" title="Import Progress JSON">📥 Import</button>
+        <button class="btn btn-sm" id="btn-export-json" title="Export Backup JSON">📤 Export</button>
+        <button class="btn btn-sm" id="btn-reset-data" title="Reset to initial Excel dataset" style="color: var(--text-muted);">🔄</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Today Focus Banner -->
+    <div class="focus-banner">
+      <div class="focus-banner-text">
+        <h2>Spaced Repetition Practice Queue</h2>
+        <p>Keep your problem-solving intuitions sharp without cramming. Revise on schedule to achieve permanent retention.</p>
+        <div class="date-badge">
+          📅 Target Date: <strong id="current-date-display">Today</strong>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+        <span style="font-size: 0.8rem; color: var(--text-secondary);">Simulate Timeline:</span>
+        <button class="btn btn-sm" id="btn-next-day">+1 Day</button>
+        <button class="btn btn-sm" id="btn-next-week">+7 Days</button>
+        <button class="btn btn-sm" id="btn-reset-date">Reset Date</button>
+      </div>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="hero-grid">
+      <div class="stat-card due">
+        <div class="stat-header">
+          <span class="stat-title">Due Today</span>
+          <span class="stat-icon">🎯</span>
+        </div>
+        <div class="stat-value" id="stat-due-today" style="color: var(--accent-blue);">0</div>
+        <div class="stat-desc">Scheduled for retention today</div>
+      </div>
+
+      <div class="stat-card overdue">
+        <div class="stat-header">
+          <span class="stat-title">Overdue</span>
+          <span class="stat-icon">⚠️</span>
+        </div>
+        <div class="stat-value" id="stat-overdue" style="color: var(--accent-red-bright);">0</div>
+        <div class="stat-desc">Missed previous revision cycle</div>
+      </div>
+
+      <div class="stat-card upcoming">
+        <div class="stat-header">
+          <span class="stat-title">Upcoming</span>
+          <span class="stat-icon">⏳</span>
+        </div>
+        <div class="stat-value" id="stat-upcoming" style="color: var(--accent-orange-bright);">0</div>
+        <div class="stat-desc">Scheduled in future intervals</div>
+      </div>
+
+      <div class="stat-card mastered">
+        <div class="stat-header">
+          <span class="stat-title">Mastered</span>
+          <span class="stat-icon">🏆</span>
+        </div>
+        <div class="stat-value" id="stat-mastered" style="color: var(--accent-green-bright);">0</div>
+        <div class="stat-desc">Passed all 3 spaced reviews</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-title">Total Solved</span>
+          <span class="stat-icon">📚</span>
+        </div>
+        <div class="stat-value" id="stat-total-solved">0</div>
+        <div class="stat-desc">Across all topics in workbook</div>
+      </div>
+    </div>
+
+    <!-- TAB 1: Due Today Queue -->
+    <section id="tab-today" class="tab-content active">
+      <div class="section-header">
+        <h3 class="section-title">
+          <span>🎯 Active Revision Queue</span>
+          <span class="badge-count">Overdue + Due Today</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          Tip: Test your recall using the <strong>Approach & Key Insight</strong> spoiler before opening the problem.
+        </p>
+      </div>
+
+      <div class="queue-grid" id="today-queue-container">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: Upcoming Schedule -->
+    <section id="tab-upcoming" class="tab-content">
+      <div class="section-header">
+        <h3 class="section-title">
+          <span>⏳ Upcoming Spaced Schedule</span>
+          <span class="badge-count">Future Intervals</span>
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          Sorted by soonest upcoming revision date.
+        </p>
+      </div>
+
+      <div class="queue-grid" id="upcoming-container">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 3: All Problems Table -->
+    <section id="tab-all" class="tab-content">
+      <div class="section-header">
+        <h3 class="section-title">
+          <span>📋 All 98 LeetCode Problems</span>
+        </h3>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="controls-bar">
+        <div class="search-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search problem name, subtopic, or algorithm...">
+        </div>
+
+        <div class="filter-group">
+          <select id="filter-topic" class="select-input">
+            <option value="ALL">All Topics</option>
+          </select>
+
+          <select id="filter-difficulty" class="select-input">
+            <option value="ALL">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+
+          <select id="filter-status" class="select-input">
+            <option value="ALL">All Revision Statuses</option>
+            <option value="DUE">Due Today / Overdue</option>
+            <option value="UPCOMING">Upcoming</option>
+            <option value="MASTERED">Mastered</option>
+            <option value="UNSOLVED">Not Solved Yet</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>Topic & Concept</th>
+              <th>Problem Name</th>
+              <th>Difficulty</th>
+              <th>Algorithm Used</th>
+              <th>Revision Status</th>
+              <th>Revision Dates</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="problems-tbody">
+            <!-- Injected via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 4: Analytics -->
+    <section id="tab-analytics" class="tab-content">
+      <div class="section-header">
+        <h3 class="section-title">
+          <span>📊 Mastery & Topic Retention Breakdown</span>
+        </h3>
+      </div>
+
+      <div id="analytics-container">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Notes Modal -->
+  <div class="modal-overlay" id="notes-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="notes-modal-title">Problem Notes</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          Record personal edge cases, key invariants, or time/space intuition:
+        </p>
+        <textarea id="notes-modal-textarea" class="modal-textarea" placeholder="e.g., Remember to handle single-character strings; uses two pointers from left and right..."></textarea>
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+          <button class="btn btn-primary" id="notes-modal-save">Save Notes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Modal -->
+  <div class="modal-overlay" id="import-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Import Progress JSON</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-secondary);">
+          Paste your JSON progress backup or platform export below. It supports both full backup exports and phase progress schemas:
+        </p>
+        <textarea id="import-textarea" class="modal-textarea" placeholder='{"version": 3, "progress": { ... }}'></textarea>
+        <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+          <button class="btn btn-primary" id="btn-submit-import">Import & Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      DSA Spaced-Repetition Revision System • Synchronized with <a href="../LeetCode_DSA_Tracker.xlsx" style="color: var(--accent-blue-hover);">LeetCode_DSA_Tracker.xlsx</a>
+    </p>
+    <p style="margin-top: 0.3rem; color: var(--text-muted);">
+      Created for Vaibhav Tiwari • Java & LeetCode Mastery
+    </p>
+  </footer>
+
+  <!-- Bundled Problems Dataset & Engine -->
+  <script src="problems_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

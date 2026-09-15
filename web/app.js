@@ -144,25 +144,77 @@
     }
   }
 
-  // Load state
-  function loadState() {
+  const API_URL = (window.location.protocol === 'http:' || window.location.protocol === 'https:')
+    ? ''
+    : 'http://localhost:8000';
+
+  function updateSaveIndicator(text, isSuccess) {
+    const el = document.getElementById('save-indicator');
+    if (el) {
+      el.textContent = text;
+      el.style.color = isSuccess ? 'var(--accent-green-bright)' : 'var(--accent-orange-bright)';
+    }
+  }
+
+  async function syncToServer() {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        problems = JSON.parse(saved);
-        return;
+      const resp = await fetch(`${API_URL}/api/save`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ problems })
+      });
+      if (resp.ok) {
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        updateSaveIndicator(`🟢 Saved to Disk & Excel (${time})`, true);
+      } else {
+        updateSaveIndicator('🟡 Saved in Browser Only', false);
       }
     } catch (e) {
-      console.warn('Failed to parse localStorage:', e);
+      updateSaveIndicator('🟡 Saved in Browser Only', false);
+    }
+  }
+
+  // Load state
+  async function loadState() {
+    let loadedFromApi = false;
+    try {
+      const resp = await fetch(`${API_URL}/api/load`);
+      if (resp.ok) {
+        const serverProblems = await resp.json();
+        if (Array.isArray(serverProblems) && serverProblems.length > 0) {
+          problems = serverProblems;
+          loadedFromApi = true;
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(problems));
+          } catch(e) {}
+          updateSaveIndicator('🟢 Connected to Local Server', true);
+        }
+      }
+    } catch (e) {
+      // Server offline, fall back to localStorage
     }
 
-    // Default to INITIAL_PROBLEMS from problems_data.js
-    if (window.INITIAL_PROBLEMS && Array.isArray(window.INITIAL_PROBLEMS)) {
-      problems = JSON.parse(JSON.stringify(window.INITIAL_PROBLEMS));
-    } else {
-      problems = [];
+    if (!loadedFromApi) {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          problems = JSON.parse(saved);
+          updateSaveIndicator('🟡 Using Browser Storage', false);
+          syncToServer();
+          return;
+        }
+      } catch (e) {
+        console.warn('Failed to parse localStorage:', e);
+      }
+
+      // Default to INITIAL_PROBLEMS from problems_data.js
+      if (window.INITIAL_PROBLEMS && Array.isArray(window.INITIAL_PROBLEMS)) {
+        problems = JSON.parse(JSON.stringify(window.INITIAL_PROBLEMS));
+      } else {
+        problems = [];
+      }
+      saveState();
     }
-    saveState();
   }
 
   function saveState() {
@@ -171,6 +223,7 @@
     } catch (e) {
       console.error('Failed to save to localStorage:', e);
     }
+    syncToServer();
   }
 
   // Actions

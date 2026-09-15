@@ -2,15 +2,12 @@
 title DSA Revision Web App
 echo ========================================================
 echo   Starting DSA Spaced Repetition Revision Web App...
+echo   Auto-Save: Every revision is saved directly to disk & Excel!
 echo ========================================================
 echo.
 
 cd /d "%~dp0"
 
-REM Open web app in default browser
-start "" "%~dp0web\index.html"
+python server.py
 
-echo Web app opened in your browser!
-echo.
-echo Press any key to exit this launcher window...
-pause >nul
+pause

@@ -1,5 +1,4 @@
-// Auto-saved from DSA Revision App
-window.INITIAL_PROBLEMS = [
+[
   {
     "id": "p_1_convert-the-temperature",
     "no": 1,
@@ -1568,4 +1567,4 @@ window.INITIAL_PROBLEMS = [
     "rev3": "",
     "notes": ""
   }
-];
+]

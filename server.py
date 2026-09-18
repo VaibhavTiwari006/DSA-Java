@@ -147,8 +147,9 @@ def start_server():
             httpd.serve_forever()
     except OSError as e:
         if "address already in use" in str(e).lower() or e.errno == 98 or e.errno == 10048:
-            print(f"[Notice] Port {PORT} is already in use. Opening browser to existing server...")
-            webbrowser.open(f"http://localhost:{PORT}")
+            print(f"[Notice] Port {PORT} is already in use.")
+            if '--no-browser' not in sys.argv:
+                webbrowser.open(f"http://localhost:{PORT}")
         else:
             raise
 

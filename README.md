@@ -2,16 +2,29 @@
 
 A topic-wise record of Java implementations and LeetCode problem-solving practice.
 
+> 🚀 **Live Web App**: Practice and revise with the interactive [DSA Spaced Repetition Tracker](https://vaibhavtiwari006.github.io/DSA-Java/) — featuring automated daily revision queues, active recall cards, and topic mastery analytics!
+
 ## Progress Snapshot
 
 | Metric | Current value |
 |---|---:|
+| Live Web App | [vaibhavtiwari006.github.io/DSA-Java](https://vaibhavtiwari006.github.io/DSA-Java/) |
 | LeetCode solution files | 65 |
 | Primary language | Java |
 | Repository organization | Topic-wise |
-| Detailed tracker | [LeetCode_DSA_Tracker.xlsx](LeetCode_DSA_Tracker.xlsx) |
+| Detailed spreadsheet | [LeetCode_DSA_Tracker.xlsx](LeetCode_DSA_Tracker.xlsx) |
 
-The workbook records the Easy, Medium, and Hard classification for individual problems. The README reports only counts verified directly from the repository; the difficulty totals will be added when they can be calculated automatically from repository metadata.
+The workbook and web app record the Easy, Medium, and Hard classification for individual problems. The README reports only counts verified directly from the repository; the difficulty totals will be added when they can be calculated automatically from repository metadata.
+
+## ⚡ Interactive DSA Revision Web App
+
+Access the app here: **[https://vaibhavtiwari006.github.io/DSA-Java/](https://vaibhavtiwari006.github.io/DSA-Java/)**
+
+A Spaced-Repetition practice tracker inspired by the forgetting curve:
+- **🎯 Daily Revision Queue**: Automatically calculates which questions are due for revision today (Rev 1 @ +1d, Rev 2 @ +7d, Rev 3 @ +21d).
+- **💡 Active Recall / Spoiler Mode**: Conceals the algorithm and core pattern behind an interactive spoiler so you test your intuition before jumping to code.
+- **📋 Full Problem Catalog**: Instant search and filtering across Arrays, Strings, Stacks, Trees, Dynamic Programming, and more.
+- **💾 Automatic Persistence**: Progress saves seamlessly in your browser so checkmarks never get lost.
 
 ## Topic Progress
 

@@ -4,7 +4,8 @@ import os
 import sys
 
 def sync_from_json(json_file_path=None):
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    scripts_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(scripts_dir)
     xlsx_path = os.path.join(base_dir, 'LeetCode_DSA_Tracker.xlsx')
     
     if not json_file_path:

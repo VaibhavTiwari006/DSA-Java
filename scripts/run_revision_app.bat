@@ -29,7 +29,7 @@ if exist "%LOCALAPPDATA%\Programs\Python\Python314\python.exe" (
 REM 4. Fallback if Python cannot be executed
 echo [!] Python was not detected in PATH.
 echo [!] Opening web app directly in your browser...
-start "" "%~dp0web\index.html"
+start "" "%~dp0..\web\index.html"
 echo.
 echo Press any key to close...
 pause >nul

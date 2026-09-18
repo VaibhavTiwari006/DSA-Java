@@ -4,13 +4,18 @@ import os
 import re
 
 def export_problems():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    scripts_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = os.path.dirname(scripts_dir)
     xlsx_path = os.path.join(base_dir, 'LeetCode_DSA_Tracker.xlsx')
     web_dir = os.path.join(base_dir, 'web')
+    docs_dir = os.path.join(base_dir, 'docs')
     os.makedirs(web_dir, exist_ok=True)
+    os.makedirs(docs_dir, exist_ok=True)
     
     js_output_path = os.path.join(web_dir, 'problems_data.js')
     json_output_path = os.path.join(web_dir, 'problems.json')
+    docs_js_path = os.path.join(docs_dir, 'problems_data.js')
+    docs_json_path = os.path.join(docs_dir, 'problems.json')
 
     wb = openpyxl.load_workbook(xlsx_path)
     ws = wb.active
@@ -67,15 +72,17 @@ def export_problems():
         })
 
     # Save to JSON
-    with open(json_output_path, 'w', encoding='utf-8') as f:
-        json.dump(problems, f, indent=2, ensure_ascii=False)
+    for path in [json_output_path, docs_json_path]:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(problems, f, indent=2, ensure_ascii=False)
 
     # Save to JS for instant loading without CORS/fetch restrictions
     js_content = f"// Automatically generated from LeetCode_DSA_Tracker.xlsx\nwindow.INITIAL_PROBLEMS = {json.dumps(problems, indent=2, ensure_ascii=False)};\n"
-    with open(js_output_path, 'w', encoding='utf-8') as f:
-        f.write(js_content)
+    for path in [js_output_path, docs_js_path]:
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(js_content)
 
-    print(f"Successfully exported {len(problems)} problems to {js_output_path} and {json_output_path}")
+    print(f"Successfully exported {len(problems)} problems to web/ and docs/")
 
 if __name__ == '__main__':
     export_problems()

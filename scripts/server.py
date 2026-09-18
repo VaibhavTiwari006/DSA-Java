@@ -8,8 +8,10 @@ import webbrowser
 import sys
 
 PORT = 8000
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(SCRIPTS_DIR)
 WEB_DIR = os.path.join(BASE_DIR, 'web')
+DOCS_DIR = os.path.join(BASE_DIR, 'docs')
 XLSX_PATH = os.path.join(BASE_DIR, 'LeetCode_DSA_Tracker.xlsx')
 PROBLEMS_JSON = os.path.join(WEB_DIR, 'problems.json')
 PROBLEMS_JS = os.path.join(WEB_DIR, 'problems_data.js')
@@ -47,14 +49,18 @@ class DSARevisionHandler(http.server.SimpleHTTPRequestHandler):
                 data = json.loads(post_data.decode('utf-8'))
                 problems = data.get('problems', data) if isinstance(data, dict) else data
 
-                # 1. Save to problems.json
-                with open(PROBLEMS_JSON, 'w', encoding='utf-8') as f:
-                    json.dump(problems, f, indent=2, ensure_ascii=False)
+                # 1. Save to problems.json (web and docs)
+                for folder in [WEB_DIR, DOCS_DIR]:
+                    if os.path.exists(folder):
+                        with open(os.path.join(folder, 'problems.json'), 'w', encoding='utf-8') as f:
+                            json.dump(problems, f, indent=2, ensure_ascii=False)
 
-                # 2. Save to problems_data.js
+                # 2. Save to problems_data.js (web and docs)
                 js_content = f"// Auto-saved from DSA Revision App\nwindow.INITIAL_PROBLEMS = {json.dumps(problems, indent=2, ensure_ascii=False)};\n"
-                with open(PROBLEMS_JS, 'w', encoding='utf-8') as f:
-                    f.write(js_content)
+                for folder in [WEB_DIR, DOCS_DIR]:
+                    if os.path.exists(folder):
+                        with open(os.path.join(folder, 'problems_data.js'), 'w', encoding='utf-8') as f:
+                            f.write(js_content)
 
                 # 3. Save directly into LeetCode_DSA_Tracker.xlsx
                 excel_updated = self.update_excel(problems)

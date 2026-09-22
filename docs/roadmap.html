@@ -906,32 +906,110 @@ footer {
   text-transform: uppercase;
 }
 
+
+/* Top Sticky Suite Switcher */
+.global-site-switcher {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 10px 18px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.site-switcher-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.switcher-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #f0f6fc;
+}
+.switcher-brand span.spark { color: #58a6ff; font-size: 16px; }
+.switcher-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.switcher-tab {
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  color: #8b949e;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.switcher-tab:hover {
+  color: #f0f6fc;
+  border-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.08);
+}
+.switcher-tab.active {
+  background: rgba(88, 166, 255, 0.15);
+  border-color: #58a6ff;
+  color: #58a6ff;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+}
+
+/* Updated Stop Container to separate Label from Practice Drawer */
+.stop {
+  display: block !important;
+}
+.stop-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+.stop-main-check {
+  margin-top: 3px;
+}
+.stop-main-info {
+  flex-grow: 1;
+}
+
 </style>
 </head>
 <body>
-<div class="wrap">
-  <!-- Cross Navigation to DSA Revise -->
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:10px;">
-    <a href="index.html" style="color:var(--rail); text-decoration:none; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
-      ⚡ ← Switch to DSA Revise (Spaced Repetition)
-    </a>
-    <span style="font-size:11.5px; font-family:'JetBrains Mono',monospace; color:var(--text-muted);">
-      550 LeetCode Questions · Live on GitHub Pages
-    </span>
+<nav class="global-site-switcher">
+  <div class="site-switcher-inner">
+    <div class="switcher-brand">
+      <span class="spark">⚡</span>
+      <span>Vaibhav's DSA Suite</span>
+    </div>
+    <div class="switcher-tabs">
+      <a href="index.html" class="switcher-tab" title="Spaced Repetition Flashcard Queue">
+        ⚡ DSA Revise (Spaced Repetition)
+      </a>
+      <a href="roadmap.html" class="switcher-tab active" title="777 Pepcoding Videos + 550 LeetCode Practice Questions">
+        🗺️ Pepcoding Master Roadmap
+      </a>
+    </div>
   </div>
-  <!-- View Navigation -->
-  <!-- Header -->
-  <header>
-    <p class="eyebrow">Pepcoding Java · Master DSA Architecture</p>
-    <h1>DSA Route Map</h1>
-    <p class="sub">A strictly ordered, 15-phase Beginner-to-Advanced DSA Master Architecture. Zero inverted dependencies: Big-O, bit fundamentals, two pointers, sorting, and BST invariants are mastered before their dependent advanced structures. Covers 777 total Pepcoding videos (554 Level 1 + 223 Level 2) with comprehensive supplementary mastery for competitive and interview readiness.</p>
-  </header>
+</nav>
 
-  <!-- ═══════════════ VIEW 1: ROADMAP ═══════════════ -->
-  <div id="view-roadmap">
-    <!-- Stats Grid -->
-    <div class="stats">
-      <div class="stat"><div class="num">15</div><div class="lbl">Phases</div></div>
+<div class="wrap">
+  
       <div class="stat"><div class="num">777</div><div class="lbl">Pepcoding Videos (L1+L2)</div></div>
       <div class="stat"><div class="num" id="statTopics">62</div><div class="lbl">Topic Blocks</div></div>
       <div class="stat"><div class="num" id="statDone">0 / 62</div><div class="lbl">Topics Cleared</div></div>
@@ -956,6 +1034,7 @@ footer {
         <button class="filter-btn" data-filter="supp">Supplementary</button>
       </div>
       <div class="action-group">
+        <button class="action-btn" id="expandAllBtn">Expand All</button>
         <button class="action-btn" id="exportBtn">Export</button>
         <button class="action-btn" id="importBtn">Import</button>
         <input type="file" id="importInput" accept=".json">
@@ -4764,7 +4843,7 @@ const searchBox = document.getElementById("searchBox");
 const filterBtns = document.querySelectorAll(".filter-btn");
 let activeFilter = "all";
 let searchQuery = "";
-let openPhases = new Set();
+let openPhases = new Set([0, 1]);
 
 function escapeHtml(s) {
   return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
@@ -4944,9 +5023,9 @@ function renderRoadmap() {
       }
 
       stopEl.innerHTML = `
-        <label>
-          <input type="checkbox" class="checkbox" ${isDone ? "checked" : ""} data-id="${id}" data-pi="${pi}">
-          <span class="stop-body">
+        <div class="stop-main">
+          <input type="checkbox" class="checkbox stop-main-check" ${isDone ? "checked" : ""} data-id="${id}" data-pi="${pi}" id="cb-${id}">
+          <label for="cb-${id}" class="stop-body stop-main-info">
             <div class="stop-header">
               <span class="stop-title">${highlightMatch(stop.title, searchQuery)}</span>
               <div class="stop-badges">${badgeType} ${badgeDiff}</div>
@@ -4955,9 +5034,9 @@ function renderRoadmap() {
             <div class="stop-footer">
               <span class="stop-range">${stop.range}</span>
             </div>
-            ${practiceHtml}
-          </span>
-        </label>
+          </label>
+        </div>
+        ${practiceHtml}
       `;
       body.appendChild(stopEl);
     });
@@ -5002,6 +5081,22 @@ filterBtns.forEach(btn => {
     renderRoadmap();
   });
 });
+
+let allExpanded = false;
+const expandAllBtn = document.getElementById("expandAllBtn");
+if (expandAllBtn) {
+  expandAllBtn.addEventListener("click", () => {
+    allExpanded = !allExpanded;
+    if (allExpanded) {
+      DATA.forEach((_, idx) => openPhases.add(idx));
+      expandAllBtn.textContent = "Collapse All";
+    } else {
+      openPhases.clear();
+      expandAllBtn.textContent = "Expand All";
+    }
+    renderRoadmap();
+  });
+}
 
 let searchDebounce;
 searchBox.addEventListener("input", () => {

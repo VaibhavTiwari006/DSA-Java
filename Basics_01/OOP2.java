@@ -16,7 +16,8 @@ public class OOP2 {
         System.out.println(s1.roll);
         System.out.println(s1.college);
 
-        int x; //local variable (stored in stack memeory) --> no default variables
+        int x=5; //local variable (stored in stack memeory) --> no default variables
+        System.out.println(x);
     }
 }
 

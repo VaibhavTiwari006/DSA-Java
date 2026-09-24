@@ -39,7 +39,3 @@ public class SynchronizationDemo {
         t2.start();
     }
 }
-
-
-
-

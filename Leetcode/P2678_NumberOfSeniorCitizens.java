@@ -13,5 +13,4 @@ public class P2678_NumberOfSeniorCitizens {
             return count;
         }
     }
-
 }

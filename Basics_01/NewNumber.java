@@ -3,10 +3,10 @@ package Basics_01;
 
 public class NewNumber {
     public static void main(String[] s) {
-        System.out.println(NewNumber(2565));
+        System.out.println(newNumber(2565));
     }
 
-    static int NewNumber(int n) {
+    static int newNumber(int n) {
         String newNumber = "9876543210";
         String s = String.valueOf(n);
         String newS = "";

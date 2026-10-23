@@ -5,7 +5,7 @@ public class Balance_Paranthesis {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int count = 0;
-        System.out.println("Enter string of brackets");
+        System.out.println("Enter string of brackets"); // expresiion contains only "(" or ")"
         String expression = in.nextLine();
         Stack<Character> st = new Stack<>();
         for (int i = 0; i < expression.length(); i++) {

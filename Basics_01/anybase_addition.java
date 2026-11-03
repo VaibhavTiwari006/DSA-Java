@@ -2,7 +2,7 @@ package Basics_01;
 import java.util.Scanner;
 public class anybase_addition {
     public static void main(String[] args) {
-        
+        // To convert anybase to anybase ( addition )
         Scanner in = new Scanner(System.in);
         System.out.println("Enter first number ");
         int num1 = in.nextInt();

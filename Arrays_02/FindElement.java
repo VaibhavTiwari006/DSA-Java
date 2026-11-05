@@ -2,6 +2,7 @@ package Arrays_02;
 import java.util.Scanner;
 public class FindElement {
     public static void main(String[] args) {
+        // linear search approach
         Scanner in = new Scanner(System.in);
         boolean found = false;
         System.out.println("Enter number of elements in the array");

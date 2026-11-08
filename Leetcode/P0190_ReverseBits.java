@@ -1,5 +1,5 @@
 package Leetcode;
-
+// Code to reverse the bits of a number 
 public class P0190_ReverseBits {
     public class Solution {
     public int reverseBits(int n) {
